@@ -4,36 +4,29 @@
 
 type LogLevel = 'log' | 'debug' | 'info' | 'warn' | 'error';
 type Theme = 'primary' | 'secondary';
-type Position = 'before' | 'after';
 
 export class Logger {
   private message: string[] = [];
 
   /**
-   * Adds a message to the log with a specific position.
+   * Adds a message to the log.
    *
    * @param {string} message - The message to be added to the log.
-   * @param {Position} position - The position where the message should be added.
    * @return {this} The current instance of the Logger class.
    */
-  addMessage(message: string, position: Position): this {
-    if (position === 'before') {
-      this.message.unshift(message);
-    } else {
-      this.message.push(message);
-    }
+  addMessage(message: string,): this {
+    this.message.push(message);
 
     return this;
   }
 
   /**
-   * Adds a status label to the log with a specific style.
+   * Adds a status label to the log with a specific theme.
    *
    * @param {LogLevel} level - The log level (log, debug, info, warn, error).
    * @param {Theme} theme - The theme of the label ('primary' or 'secondary').
-   * @param {Position} position - The position of the label ('before' or 'after' the message).
    */
-  addStatus(level: LogLevel, theme: Theme, position: Position): this {
+  addStatus(level: LogLevel, theme: Theme): this {
     const colors: Record<LogLevel, string[]> = {
       log: ['#7f8c8d', '#ffffff'],
       debug: ['#f39c12', '#ffffff'],
@@ -44,18 +37,12 @@ export class Logger {
 
     const backgroundColor: string = colors[level][0];
     const textColor: string = colors[level][1];
-
     const style: string = theme === 'primary'
         ? `background: ${backgroundColor}; color: ${textColor}`
         : `color: ${backgroundColor}`;
-
     const result: string = `%c ${level.toUpperCase()} `;
 
-    if (position === 'before') {
-      this.message.unshift(result, style);
-    } else {
-      this.message.push(result, style);
-    }
+    this.message.push(result, style);
 
     return this;
   }
