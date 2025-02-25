@@ -1,0 +1,25 @@
+{
+  "name": "@axuata/logica",
+  "version": "0.1.0",
+  "description": "⚡ A TypeScript logging utility library",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "license": "MIT",
+  "author": "Axuata",
+  "type": "commonjs",
+  "bugs": {
+    "type": "git",
+    "url": "git+https://github.com/axuata/logica.git"
+  },
+  "scripts": {
+    "build": "tsc",
+    "prepare": "npm run build",
+    "test": "vitest --run"
+  },
+  "dependencies": {
+    "typescript": "^5.7.3"
+  },
+  "devDependencies": {
+    "vitest": "^3.0.6"
+  }
+}
