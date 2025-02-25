@@ -23,8 +23,8 @@ export class Logger {
   /**
    * Adds a status label to the log with a specific theme.
    *
-   * @param {LogLevel} level - The log level (log, debug, info, warn, error).
-   * @param {Theme} theme - The theme of the label ('primary' or 'secondary').
+   * @param {LogLevel} level - The log level.
+   * @param {Theme} theme - The theme of the label.
    */
   addStatus(level: LogLevel, theme: Theme): this {
     const colors: Record<LogLevel, string[]> = {
@@ -50,7 +50,7 @@ export class Logger {
   /**
    * Outputs the logged messages to the console.
    *
-   * @param {LogLevel} level - The log level (currently unused, but can be expanded for filtering).
+   * @param {LogLevel} level - The log level.
    */
   out(level: LogLevel): void {
     switch (level) {
