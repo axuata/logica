@@ -10,7 +10,7 @@ describe('Logger', () => {
     const logger = new Logger();
     const consoleSpy = vi.spyOn(console, 'log');
 
-    logger.addMessage('Hello World', 'after').addStatus('info', 'primary', 'before').out('log');
+    logger.addStatus('info', 'primary').addMessage('Hello World').out('log');
 
     expect(consoleSpy).toHaveBeenCalledWith("%c INFO ", "background: #3498db; color: #ffffff", "Hello World");
     consoleSpy.mockRestore();

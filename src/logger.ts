@@ -11,10 +11,9 @@ export class Logger {
   /**
    * Adds a message to the log.
    *
-   * @param {string} message - The message to be added to the log.
-   * @return {this} The current instance of the Logger class.
+   * @param {string} message - The **message** to be added to the log.
    */
-  addMessage(message: string,): this {
+  addMessage(message: string): this {
     this.message.push(message);
 
     return this;
@@ -23,8 +22,8 @@ export class Logger {
   /**
    * Adds a status label to the log with a specific theme.
    *
-   * @param {LogLevel} level - The log level.
-   * @param {Theme} theme - The theme of the label.
+   * @param {LogLevel} level - The **log level**.
+   * @param {Theme} theme - The **theme** of the label.
    */
   addStatus(level: LogLevel, theme: Theme): this {
     const colors: Record<LogLevel, string[]> = {
@@ -50,7 +49,7 @@ export class Logger {
   /**
    * Outputs the logged messages to the console.
    *
-   * @param {LogLevel} level - The log level.
+   * @param {LogLevel} level - The **log level**.
    */
   out(level: LogLevel): void {
     switch (level) {
