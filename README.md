@@ -1,3 +1,5 @@
+Warning: This package is under development.
+
 # What is Logica?
 Logica is a lightweight [Typescript](https://wikipedia.org/wiki/TypeScript) logging library.
 
