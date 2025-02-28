@@ -47,6 +47,17 @@ export class Logger {
   }
 
   /**
+   * Adds the stack trace of an error to the log.
+   *
+   * @param {Error} error - The **error** object containing the stack trace.
+   */
+  addStackTrace(error: Error): this {
+    this.message.push(error.stack ?? "[(Logica Error) No stack trace available]");
+
+    return this;
+  }
+
+  /**
    * Outputs the logged messages to the console.
    *
    * @param {LogLevel} level - The **log level**.
