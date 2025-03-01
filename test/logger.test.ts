@@ -6,34 +6,68 @@ import {Logger} from "../src";
 import {describe, test, vi, expect} from "vitest";
 
 describe('Logger', () => {
+  const logger = new Logger();
+
   test('Logging with a message', () => {
-    const logger = new Logger();
     const consoleSpy = vi.spyOn(console, 'log');
 
     logger.addMessage('Hello World').out('log');
 
     expect(consoleSpy).toHaveBeenCalledWith('Hello World');
+
     consoleSpy.mockRestore();
   });
 
   test('Logging with a status', () => {
-    const logger = new Logger();
     const consoleSpy = vi.spyOn(console, 'log');
 
     logger.addStatus('info', 'primary').addMessage('Hello World').out('log');
 
     expect(consoleSpy).toHaveBeenCalledWith('%c INFO ', 'background: #3498db; color: #ffffff', 'Hello World');
+
     consoleSpy.mockRestore();
   });
 
   test('Logging with a error stacktrace and a status', () => {
-    const logger = new Logger();
     const consoleSpy = vi.spyOn(console, 'log');
     const error = new Error('Test Error');
 
     logger.addStackTrace(error).out('log');
 
     expect(consoleSpy).toHaveBeenCalledWith(expect.stringContaining('Test Error'));
+
+    consoleSpy.mockRestore();
+  });
+
+  test('Logging with a status with an formatted timestamp', () => {
+    const consoleSpy = vi.spyOn(console, 'log');
+    const format: string = '[Y]-[MM]-[DD] [hh]:[mm]:[ss] (UTC[timezoneOffsetHours])';
+
+    logger.addTimestamp(format).out('log');
+
+    expect(consoleSpy).toHaveBeenCalledWith(expect.stringContaining('2025'));
+    expect(consoleSpy).toHaveBeenCalledWith(expect.stringContaining('(UTC'));
+
+    consoleSpy.mockRestore();
+  });
+
+  test('Logging with an affix', () => {
+    const consoleSpy = vi.spyOn(console, 'log');
+
+    logger.addAffix('⚡').out('log');
+
+    expect(consoleSpy).toHaveBeenCalledWith(expect.stringMatching('⚡'));
+
+    consoleSpy.mockRestore();
+  });
+
+  test('Logging with an environment', () => {
+    const consoleSpy = vi.spyOn(console, 'log');
+
+    logger.addEnvironment('development').out('log');
+
+    expect(consoleSpy).toHaveBeenCalledWith(expect.stringMatching('[DEVELOPMENT]'));
+
     consoleSpy.mockRestore();
   });
 });
