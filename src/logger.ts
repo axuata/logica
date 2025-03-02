@@ -139,6 +139,76 @@ export class Logger {
   }
 
   /**
+   * Adds a progress bar to the log.
+   *
+   * @param {number} percent - The **current progress** as a **percentage** (0-100).
+   * @returns {this} The current instance, enabling method chaining.
+   */
+  addProgressBar(percent: number): this {
+    const roundedPercent: number = Math.round(percent / 5) * 5;
+    const barYesPerLength: number = roundedPercent / 5;
+    const barNoPerLength: number = 20 - barYesPerLength;
+    let result: string = '[';
+
+    for (let i: number = 0; i < barYesPerLength; i++) {
+      result += '#';
+    }
+
+    for (let i: number = 0; i < barNoPerLength; i++) {
+      result += ' ';
+    }
+
+    const percentString: string = `${percent}%`
+
+    result += `| ${percentString.padEnd(5)}]`;
+
+    this.message.push(result);
+
+    return this;
+  }
+
+  /**
+   * Adds indentation to the log message.
+   *
+   * @param {number} depth - The **number of indentation levels** to apply (each level adds 2 spaces).
+   * @returns {this} The current instance, enabling method chaining.
+   */
+  addIndentation(depth: number): this {
+    let result: string = '';
+
+    for (let i: number = 0; i < depth; i++) {
+      result += '  ';
+    }
+
+    this.message.push(result);
+
+    return this;
+  }
+
+  /**
+   * Starts a new log group with the specified label.
+   *
+   * @param {string} label - The **label** for the log group.
+   * @returns {this} The current instance, enabling method chaining.
+   */
+  startGroup(label: string): this {
+    console.group(label);
+
+    return this;
+  }
+
+  /**
+   * Ends the current log group.
+   *
+   * @returns {this} The current instance, enabling method chaining.
+   */
+  endGroup(): this {
+    console.groupEnd();
+
+    return this;
+  }
+
+  /**
    * Outputs the logged messages to the console.
    *
    * @param {LogLevel} level - The **log level**.

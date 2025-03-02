@@ -1,6 +1,6 @@
 {
   "name": "@axuata/logica",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "⚡ A TypeScript logging utility library",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

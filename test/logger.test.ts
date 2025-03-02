@@ -70,4 +70,47 @@ describe('Logger', () => {
 
     consoleSpy.mockRestore();
   });
+
+  test('Logging with a progress bar', () => {
+    const consoleSpy = vi.spyOn(console, 'log');
+    const testArray: number[] = [1, 5, 7, 10, 50, 51, 52, 53, 54, 55, 56, 80, 89, 90, 100];
+
+    testArray.forEach((number) => {
+      logger.addProgressBar(number).out('log');
+    });
+
+    expect(consoleSpy).toHaveBeenCalledWith(expect.stringContaining('[####################| 100% ]'));
+
+    consoleSpy.mockRestore();
+  });
+
+  test('Logging with indents', () => {
+    const consoleSpy = vi.spyOn(console, 'log');
+
+    logger.addIndentation(3).out('log');
+
+    expect(consoleSpy).toHaveBeenCalledWith(expect.stringMatching('      '));
+
+    consoleSpy.mockRestore();
+  });
+
+  test('Logging with labeled group', () => {
+    const consoleSpy = vi.spyOn(console, 'group');
+
+    logger.startGroup('testLabel').out('log');
+
+    expect(consoleSpy).toHaveBeenCalledWith(expect.stringContaining('testLabel'));
+
+    consoleSpy.mockRestore();
+  });
+
+  test('Logging with labeled group end', () => {
+    const consoleSpy = vi.spyOn(console, 'groupEnd');
+
+    logger.endGroup().out('log');
+
+    expect(consoleSpy).toHaveBeenCalled();
+
+    consoleSpy.mockRestore();
+  });
 });
