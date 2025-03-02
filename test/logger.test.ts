@@ -93,24 +93,4 @@ describe('Logger', () => {
 
     consoleSpy.mockRestore();
   });
-
-  test('Logging with labeled group', () => {
-    const consoleSpy = vi.spyOn(console, 'group');
-
-    logger.startGroup('testLabel').out('log');
-
-    expect(consoleSpy).toHaveBeenCalledWith(expect.stringContaining('testLabel'));
-
-    consoleSpy.mockRestore();
-  });
-
-  test('Logging with labeled group end', () => {
-    const consoleSpy = vi.spyOn(console, 'groupEnd');
-
-    logger.endGroup().out('log');
-
-    expect(consoleSpy).toHaveBeenCalled();
-
-    consoleSpy.mockRestore();
-  });
 });

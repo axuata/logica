@@ -186,10 +186,7 @@ export class Logger {
   }
 
   /**
-   * Starts a new log group with the specified label.
-   *
-   * @param {string} label - The **label** for the log group.
-   * @returns {this} The current instance, enabling method chaining.
+   * @deprecated This function has been moved to the `Utils` class. Please use `startGroup` from the `Utils` class instead. This function will be removed in the next major version.
    */
   startGroup(label: string): this {
     console.group(label);
@@ -198,9 +195,7 @@ export class Logger {
   }
 
   /**
-   * Ends the current log group.
-   *
-   * @returns {this} The current instance, enabling method chaining.
+   * @deprecated This function has been moved to the `Utils` class. Please use `startGroup` from the `Utils` class instead. This function will be removed in the next major version.
    */
   endGroup(): this {
     console.groupEnd();

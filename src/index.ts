@@ -3,3 +3,4 @@
 // https://opensource.org/licenses/MIT
 
 export * from './logger';
+export * from './utils'
