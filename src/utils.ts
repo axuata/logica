@@ -16,6 +16,18 @@ export class Utils {
   }
 
   /**
+   * Starts a new collapsed log group with the specified label.
+   *
+   * @param {string} label - The **label** for the collapsed log group.
+   * @returns {this} The current instance, enabling method chaining.
+   */
+  startGroupCollapsed(label: string): this {
+    console.groupCollapsed(label);
+
+    return this;
+  }
+
+  /**
    * Ends the current log group.
    *
    * @returns {this} The current instance, enabling method chaining.

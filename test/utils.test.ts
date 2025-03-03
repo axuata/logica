@@ -18,6 +18,16 @@ describe('Utils', () => {
     consoleSpy.mockRestore();
   });
 
+  test('Logging with labeled collapsed group', () => {
+    const consoleSpy = vi.spyOn(console, 'groupCollapsed');
+
+    utils.startGroupCollapsed('testLabelCollapsed');
+
+    expect(consoleSpy).toHaveBeenCalledWith(expect.stringContaining('testLabelCollapsed'));
+
+    consoleSpy.mockRestore();
+  });
+
   test('Logging with labeled group end', () => {
     const consoleSpy = vi.spyOn(console, 'groupEnd');
 

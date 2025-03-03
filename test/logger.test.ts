@@ -89,7 +89,17 @@ describe('Logger', () => {
 
     logger.addIndentation(3).out('log');
 
-    expect(consoleSpy).toHaveBeenCalledWith(expect.stringMatching('      '));
+    expect(consoleSpy).toHaveBeenCalledWith('      ');
+
+    consoleSpy.mockRestore();
+  });
+
+  test('Logging with divider', () => {
+    const consoleSpy = vi.spyOn(console, 'log');
+
+    logger.addMessage('Hello').addDivider().addMessage('World').out('log');
+
+    expect(consoleSpy).toHaveBeenCalledWith('Hello', '|', 'World');
 
     consoleSpy.mockRestore();
   });

@@ -186,6 +186,17 @@ export class Logger {
   }
 
   /**
+   * Adds a divider to the log message.
+   *
+   * @returns {this} The current instance, enabling method chaining.
+   */
+  addDivider(): this {
+    this.message.push('|');
+
+    return this;
+  }
+
+  /**
    * @deprecated This function has been moved to the `Utils` class. Please use `startGroup` from the `Utils` class instead. This function will be removed in the next major version.
    */
   startGroup(label: string): this {
@@ -209,26 +220,7 @@ export class Logger {
    * @param {LogLevel} level - The **log level**.
    */
   out(level: LogLevel): void {
-    switch (level) {
-      case 'log':
-        console.log(...this.message);
-        break;
-      case 'debug':
-        console.debug(...this.message);
-        break;
-      case 'info':
-        console.info(...this.message);
-        break;
-      case 'warn':
-        console.warn(...this.message);
-        break;
-      case 'error':
-        console.error(...this.message);
-        break;
-      default:
-        console.log(...this.message);
-        break;
-    }
+    (console[level] ?? console.log)(...this.message);
 
     this.message = [];
   }
