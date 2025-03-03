@@ -7,4 +7,4 @@ Logica is a lightweight [Typescript](https://wikipedia.org/wiki/TypeScript) logg
 - 🎯 TypeScript First – Fully typed API for better developer experience.
 
 ## For details
-[Document](https://axudocs.netlify.app/packages/logica/introduction/what-is-logica.html)
+[Document](https://axudocs.netlify.app/libraries/logica/introduction/what-is-logica.html)
