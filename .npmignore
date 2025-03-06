@@ -1,6 +1,16 @@
-/node_modules
-/src
-/test
-/playground
-/.idea
+# Node.js
+node_modules/
+
+# TypeScript
+src/
 tsconfig.json
+
+# IDE
+.vscode/
+.idea/
+
+# Tests
+tests/
+
+# Logs
+*.log
