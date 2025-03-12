@@ -1,7 +1,7 @@
 {
   "name": "@axuata/logica",
-  "version": "1.2.1",
-  "description": "⚡ A TypeScript logging utility library",
+  "version": "1.2.2",
+  "description": "⚡ Easy-to-use Logging Library",
   "author": "Axuata",
   "license": "MIT",
   "repository": "https://github.com/axuata/logica",
